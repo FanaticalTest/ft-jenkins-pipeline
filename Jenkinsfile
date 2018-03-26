@@ -15,7 +15,7 @@ node {
 
     stage('ft-demo-ios-sim') {
         git url: 'https://github.com/FanaticalTest/ft-test-mobile-factory-demo.git' , branch: "${BRANCH}"
-        sh "export APPIUM_SERVER_URL=${APPIUM_SERVER}"
+        environmentVariables(APPIUM_SERVER_URL: "${APPIUM_SERVER}")
         sh "${GRADLE_HOME}/bin/gradle cucumber -Pdevice=IosSimulator -PAPPIUM_SERVER_URL=${APPIUM_SERVER}"
     }
 }
